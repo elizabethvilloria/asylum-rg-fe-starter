@@ -23,6 +23,7 @@ function RenderLandingPage(props) {
 
   // #2: added images section
   // #4: added bottom section
+  // #7: added "Download the Data" button
   return (
     <div className="main">
       <div className="header">
@@ -53,7 +54,7 @@ function RenderLandingPage(props) {
       </div> 
       {/* <div className="graphs-section"> */}
       
-      <div className='buttons'>
+    
         <div className="view-more-data-btn-container">
           <Button
             type="default"
@@ -62,18 +63,16 @@ function RenderLandingPage(props) {
           >
             View the Data
           </Button>
+
+          <Button
+          type="default"
+          style={{ backgroundColor: '#404C4A', color: '#FFFFFF', marginLeft: '10px' }}
+          onClick={() => history.push('/download')}
+        >
+          Download the Data
+        </Button>
         </div>
 
-        <div className="view-more-data-btn-container">
-          <Button
-            type="default"
-            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-            onClick={() => history.push('/download')}
-          >
-            Download the Data
-          </Button>
-        </div>
-      </div>
 
       <div className="middle-section">
         <div className="hrf-img-container">

@@ -10,7 +10,8 @@ import '../../../styles/RenderLandingPage.less';
 import { Button } from 'antd';
 import { useHistory } from 'react-router-dom';
 // for the purposes of testing PageNav
-// import PageNav from '../../common/PageNav';
+import PageNav from '../../common/PageNav';
+// #6: imported PageNav
 
 function RenderLandingPage(props) {
   const scrollToTop = () => {
@@ -51,15 +52,27 @@ function RenderLandingPage(props) {
         </div>
       </div> 
       {/* <div className="graphs-section"> */}
+      
+      <div className='buttons'>
+        <div className="view-more-data-btn-container">
+          <Button
+            type="default"
+            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+            onClick={() => history.push('/graphs')}
+          >
+            View the Data
+          </Button>
+        </div>
 
-      <div className="view-more-data-btn-container">
-        <Button
-          type="default"
-          style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
-          onClick={() => history.push('/graphs')}
-        >
-          View the Data
-        </Button>
+        <div className="view-more-data-btn-container">
+          <Button
+            type="default"
+            style={{ backgroundColor: '#404C4A', color: '#FFFFFF' }}
+            onClick={() => history.push('/download')}
+          >
+            Download the Data
+          </Button>
+        </div>
       </div>
 
       <div className="middle-section">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-//imported useEffect and useState
+// #1: Imported useEffect and useState
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CitizenshipMapAll from './Graphs/CitizenshipMapAll';
@@ -20,10 +20,16 @@ const { background_color } = colors;
 function GraphWrapper(props) {
   const { set_view, dispatch } = props;
   let { office, view } = useParams();
+  // #2: State Variable for storing fetched data, loading state, and error state
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   if (!view) {
     set_view('time-series');
     view = 'time-series';
   }
+  
   let map_to_render;
   if (!office) {
     switch (view) {

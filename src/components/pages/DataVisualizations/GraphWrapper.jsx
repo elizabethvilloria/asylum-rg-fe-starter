@@ -69,7 +69,7 @@ function GraphWrapper(props) {
           },
         }),
 
-        await axios.get(`${URL}/citizenSummary`, {
+        await axios.get(`${URL}/citizenshipSummary`, {
 
           params: {
             from: years[0],

@@ -3,10 +3,16 @@ import { Image } from 'antd';
 import { Link } from 'react-router-dom';
 import Logo from '../../styles/Images/WhiteLogo.png';
 import { colors } from '../../styles/data_vis_colors';
+import { useAuth0 } from '@auth0/auth0-react';
+import Login from '../pages/Profile/Login';
 
 const { primary_accent_color } = colors;
 
 function HeaderContent() {
+
+  // Use the useAuth0 hook to access authentication functions and state
+  const { loginWithRedirect, logout, isAuthenticated } = useAuth0();
+
   return (
     <div
       style={{
@@ -29,31 +35,30 @@ function HeaderContent() {
           Graphs
         </Link>
 
-        {/* Conditionally render the Profile link if the user is authenticated */}
         {isAuthenticated && (
-          <Link to="/profile" style={{ color: '#E2F0F7', paddingRight: '20px' }}>
+          <Link to="/profile" style={{ color: '#E2F0F7', paddingRight: '20px', paddingLeft: '70px' }}>
             Profile
           </Link>
         )}
 
-        {/* Display login or logout button based on authentication state */}
         {isAuthenticated ? (
           <button
             onClick={() => logout({ returnTo: window.location.origin })}
-            style={{ color: '#E2F0F7', background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: '#E2F0F7', background: 'none', border: 'none', cursor: 'pointer', paddingLeft: '70px' }}
           >
             Logout
           </button>
         ) : (
           <button
             onClick={() => loginWithRedirect()}
-            style={{ color: '#E2F0F7', background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ color: '#E2F0F7', background: 'none', border: 'none', cursor: 'pointer', paddingLeft: '70px' }}
           >
             Login
           </button>
         )}
       </div>
     </div>
+    
   );
 }
 

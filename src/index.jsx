@@ -25,6 +25,9 @@ import reducer from './state/reducers';
 import { colors } from './styles/data_vis_colors';
 import Auth0ProviderWithHistory from './auth/auth0-provider-with-history';
 import Profile from './components/pages/Profile/Profile';
+import { useAuth0 } from '@auth0/auth0-react';
+
+
 
 const { primary_accent_color } = colors;
 
@@ -49,7 +52,7 @@ ReactDOM.render(
 
 export function App() {
   const { Footer, Header } = Layout;
-  // const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   return (
     <Layout>
@@ -66,9 +69,9 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
-        {/* {isAuthenticated && (
-          <Route path="/profile" component={Profile} />
-        )} */}
+        {isAuthenticated && (
+    <Route path="/profile" component={Profile} />
+  )}
         <Route component={NotFoundPage} />
       </Switch>
       <Footer

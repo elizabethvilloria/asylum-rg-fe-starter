@@ -28,6 +28,30 @@ function HeaderContent() {
         <Link to="/graphs" style={{ color: '#E2F0F7' }}>
           Graphs
         </Link>
+
+        {/* Conditionally render the Profile link if the user is authenticated */}
+        {isAuthenticated && (
+          <Link to="/profile" style={{ color: '#E2F0F7', paddingRight: '20px' }}>
+            Profile
+          </Link>
+        )}
+
+        {/* Display login or logout button based on authentication state */}
+        {isAuthenticated ? (
+          <button
+            onClick={() => logout({ returnTo: window.location.origin })}
+            style={{ color: '#E2F0F7', background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            Logout
+          </button>
+        ) : (
+          <button
+            onClick={() => loginWithRedirect()}
+            style={{ color: '#E2F0F7', background: 'none', border: 'none', cursor: 'pointer' }}
+          >
+            Login
+          </button>
+        )}
       </div>
     </div>
   );
